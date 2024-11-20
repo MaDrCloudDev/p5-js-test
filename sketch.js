@@ -1,8 +1,9 @@
 let boxes = [];
-let size = 20;
+let size = 7;
 let cols, rows;
-let margin = 30;
-let scl = 50;
+let margin = 100;
+let scl = 22;
+let speed = 0.08;
 
 function setup() {
 	createCanvas(500, 500, WEBGL);
@@ -17,19 +18,17 @@ function setup() {
 			let z = 0;
 			let distance = dist(x, y, 0, 0);
 			let angle = map(distance, 0, width / 2, 0, TWO_PI * 2);
-			boxes[i][j] = new Box(x, y, z, angle, scl);
+			boxes[i][j] = new Box(x, y, z, angle, scl, speed);
 		}
 	}
 }
 
 function draw() {
-	background(220);
+	background(0);
 	orbitControl();
-	// let m = map(mouseX, 0, width, 0, TWO_PI);
 
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
-			// boxes[i][j].angle = m;
 			boxes[i][j].update();
 			boxes[i][j].display();
 		}
