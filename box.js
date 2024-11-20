@@ -1,6 +1,12 @@
 class Box {
-	constructor(x, y, z) {
+	constructor(x, y, z, angle, scl) {
 		this.pos = createVector(x, y, z);
+		this.angle = angle;
+		this.scl = scl;
+	}
+
+	update() {
+		this.pos.z = this.scl * sin(this.angle);
 	}
 
 	display() {
